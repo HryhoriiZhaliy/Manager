@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Správce úkolů</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Správce úkolů</h1>
+    
+    <div class="add-task">
+      <input type="text" id="new-task" placeholder="Zadejte nový úkol...">
+      <button id="add-button">Přidat</button>
+    </div>
+
+    <div id="error-container" class="error-message hidden"></div>
+    
+    <div id="loading" class="loading">Načítání...</div>
+    
+    <div id="task-list-container">
+      <p id="no-tasks-message" class="hidden">Žádné úkoly k zobrazení</p>
+      <ul id="task-list"></ul>
+    </div>
+    
+    <!-- Šablona pro editaci úkolu -->
+    <template id="edit-template">
+      <div class="edit-container">
+        <input type="text" class="edit-input">
+        <button class="save-button">✓</button>
+        <button class="cancel-button">✕</button>
+      </div>
+    </template>
+    
+    <!-- Šablona pro zobrazení úkolu -->
+    <template id="task-template">
+      <li class="task-item">
+        <div class="task-content">
+          <input type="checkbox" class="task-checkbox">
+          <span class="task-text"></span>
+        </div>
+        <div class="task-actions">
+          <button class="edit-button">Upravit</button>
+          <button class="delete-button">Smazat</button>
+        </div>
+      </li>
+    </template>
+  </div>
+
+  <script src="backend.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
