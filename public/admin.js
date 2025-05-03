@@ -1,3 +1,9 @@
+if (!localStorage.getItem('adminLoggedIn')) {
+    window.location.href = '/admin.html';
+  }
+  
+
+
 const taskForm = document.getElementById('task-form');
 const tasksList = document.getElementById('tasks-list');
 

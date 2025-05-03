@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
   <link rel="stylesheet" href="style.css">
-  <title>Admin Task Manager</title>
 </head>
+
 <body>
-  <h1>Task Manager - Admin Panel</h1>
-  <form id="task-form">
-    <input type="text" id="task" placeholder="New task">
-    <button type="submit">Add Task</button>
-  </form>
-  <ul id="tasks-list"></ul>
-  <script src="admin.js"></script>
+  <div class="header">
+    <h1>Task Manager - Admin Panel</h1>
+    <a href="index.html" class="back-btn">Back to Site</a>
+  </div>
+
+  <div class="login-container">
+    <form id="login-form">
+      <h2>Admin Login</h2>
+      <label for="username">Username</label>
+      <input type="text" id="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script src="login.js"></script>
 </body>
+
 </html>
