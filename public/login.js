@@ -13,15 +13,17 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   
       const data = await response.json();
   
+      // 🔥 Проверка только по полю success
       if (data.success === true) {
         localStorage.setItem('adminLoggedIn', 'true');
-        window.location.href = 'admin.html'; // или admin-panel.html, если панель другая
+        window.location.href = 'admin.html'; // или другая страница панели
       } else {
         alert('❌ Неверный логин или пароль!');
       }
+  
     } catch (err) {
       console.error('Ошибка входа:', err);
-      alert('⚠️ Ошибка при подключении к серверу.');
+      alert('⚠️ Ошибка подключения к серверу');
     }
   });
   
