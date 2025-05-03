@@ -1,3 +1,8 @@
+
+console.log('admin.js loaded');
+const form = document.getElementById('login-form');
+console.log('form is', form);
+
 if (!localStorage.getItem('adminLoggedIn')) {
     window.location.href = '/admin.html';
   }
