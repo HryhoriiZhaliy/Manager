@@ -5,23 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Task Manager · Admin</title>
 
-  <!-- Мини‑CSS прямо в файле для простоты -->
+  <!-- Мини‑CSS -->
   <style>
-    body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
-    .box{background:#fff;padding:20px 30px;border-radius:6px;box-shadow:0 0 8px rgba(0,0,0,.1);width:350px;margin-top:60px}
+    /* общий фон и центрирование блока */
+    body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;
+         display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
+
+    /* карточка (и форма, и панель) */
+    .box{background:#fff;padding:20px 30px;border-radius:6px;
+         box-shadow:0 0 8px rgba(0,0,0,.1);width:350px;margin-top:60px}
+
     h2{text-align:center;margin:0 0 20px}
-    input{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}
-    button{width:100%;padding:10px;background:#3399e6;border:none;color:#fff;font-weight:bold;border-radius:4px;cursor:pointer}
+    input{width:100%;padding:10px;margin-bottom:15px;
+          border:1px solid #ccc;border-radius:4px;box-sizing:border-box}
+
+    button{width:100%;padding:10px;background:#3399e6;border:none;
+           color:#fff;font-weight:bold;border-radius:4px;cursor:pointer}
     button:hover{background:#287bb5}
+
+    /* список задач: ровные строки */
     ul{list-style:none;padding:0;margin:0}
-    ul li{display:flex;align-items:center;border-bottom:1px solid #ddd;padding:8px 0}
-    ul li input[type="checkbox"]{margin-right:10px}
-    ul li button{background:none;border:none;color:#d00;font-size:18px;cursor:pointer;margin-left:auto}
+    ul li{
+      display:flex;
+      align-items:center;     /* вертикальное выравнивание */
+      gap:12px;               /* расстояние чекбокс‑текст */
+      padding:12px 0;         /* одинаковая высота строк */
+      border-bottom:1px solid #ddd;
+    }
+    ul li input[type="checkbox"]{
+      flex:0 0 20px;          /* фиксированная ширина чекбокса */
+      height:20px;
+      cursor:pointer;
+    }
+    ul li span{
+      flex:1 1 auto;          /* текст растягивается */
+      word-break:break-word;
+    }
+    ul li button{
+      flex:0 0 32px;          /* фиксированная ширина кнопки */
+      background:none;border:none;color:#d00;font-size:20px;cursor:pointer;padding:0;
+    }
+    ul li button:hover{color:#a00}
   </style>
 </head>
 <body>
 
-  <!-- ── Форма входа ───────────────────────────────────────────── -->
+  <!-- ── Форма входа ─────────────────────────── -->
   <div id="login-container" class="box">
     <h2>Admin Login</h2>
     <form id="login-form">
@@ -31,24 +60,21 @@
     </form>
   </div>
 
-  <!-- ── Админ‑панель ──────────────────────────────────────────── -->
+  <!-- ── Панель админа ───────────────────────── -->
   <div id="panel-container" class="box" style="display:none">
     <h2>Task Manager · Admin</h2>
 
-    <!-- Форма добавления задачи -->
     <form id="add-task-form">
       <input type="text" id="newTask" placeholder="New task…" required/>
       <button type="submit">Add Task</button>
     </form>
 
-    <!-- Список задач -->
     <ul id="tasks-list"></ul>
 
-    <!-- Кнопка выхода -->
     <button id="logout-btn" style="margin-top:15px;background:#777">Log out</button>
   </div>
 
-  <!-- Скрипт, выполняется после построения DOM благодаря defer -->
+  <!-- Скрипт -->
   <script src="admin.js" defer></script>
 </body>
 </html>
