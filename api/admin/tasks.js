@@ -1,27 +1,27 @@
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
-import db from "../firebase";
+import db from '../firebase';
+import { ref, update, remove } from 'firebase/database';
 
 export default async function handler(req, res) {
   const { id, name, completed } = req.body;
 
-  if (req.method === 'PUT') {
-    try {
-      await updateDoc(doc(db, "tasks", id), {
-        name,
-        completed
-      });
+  if (!id) {
+    return res.status(400).json({ success: false, message: 'Task ID is required' });
+  }
+
+  const taskRef = ref(db, `tasks/${id}`);
+
+  try {
+    if (req.method === 'PUT') {
+      await update(taskRef, { name, completed });
       res.status(200).json({ success: true });
-    } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
-    }
-  } else if (req.method === 'DELETE') {
-    try {
-      await deleteDoc(doc(db, "tasks", id));
+    } else if (req.method === 'DELETE') {
+      await remove(taskRef);
       res.status(200).json({ success: true });
-    } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
+    } else {
+      res.status(405).json({ message: 'Method Not Allowed' });
     }
-  } else {
-    res.status(405).json({ message: "Method not allowed" });
+  } catch (error) {
+    console.error('Task update/delete error:', error);
+    res.status(500).json({ success: false, error: error.message });
   }
 }

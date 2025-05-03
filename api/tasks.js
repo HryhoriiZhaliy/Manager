@@ -1,16 +1,24 @@
-import { collection, getDocs } from "firebase/firestore";
-import db from "./firebase";
+import db from './firebase';
+import { ref, get } from 'firebase/database';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
-      const tasksSnapshot = await getDocs(collection(db, 'tasks'));
-      const tasks = tasksSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const snapshot = await get(ref(db, 'tasks'));
+
+      const data = snapshot.val() || {};
+      const tasks = Object.entries(data).map(([id, task]) => ({
+        id,
+        ...task
+      }));
+
       res.status(200).json(tasks);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+    } catch (err) {
+      console.error('DB Error:', err);
+      res.status(500).json({ message: 'Failed to load tasks' });
     }
   } else {
-    res.status(405).json({ message: "Method not allowed" });
+    res.status(405).json({ message: 'Method not allowed' });
   }
 }
+
