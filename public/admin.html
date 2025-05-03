@@ -3,51 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Login</title>
+  <title>Admin Panel</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login-box {
-      background: white;
-      padding: 20px 30px;
-      border-radius: 6px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-    .login-box h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .login-box input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .login-box button {
-      width: 100%;
-      padding: 10px;
-      background: #3399e6;
-      border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .login-box button:hover {
-      background: #287bb5;
-    }
+    body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
+    .box{background:#fff;padding:20px 30px;border-radius:6px;box-shadow:0 0 8px rgba(0,0,0,.1);width:350px;margin-top:60px}
+    h2{text-align:center;margin:0 0 20px}
+    input{width:100%;padding:10px;margin-bottom:15px;border:1px solid #ccc;border-radius:4px}
+    button{width:100%;padding:10px;background:#3399e6;border:none;color:#fff;font-weight:bold;border-radius:4px;cursor:pointer}
+    button:hover{background:#287bb5}
+    ul{list-style:none;padding:0;margin:0}
+    ul li{display:flex;align-items:center;border-bottom:1px solid #ddd;padding:8px 0}
+    ul li input[type="checkbox"]{margin-right:10px}
   </style>
 </head>
 <body>
-  <div class="login-box">
+
+  <!-- Блок формы входа -->
+  <div id="login-container" class="box">
     <h2>Admin Login</h2>
     <form id="login-form">
       <input type="text" id="username" placeholder="Username" required />
@@ -56,6 +28,20 @@
     </form>
   </div>
 
-  <script src="login.js"></script>
+  <!-- Блок панели админа -->
+  <div id="panel-container" class="box" style="display:none">
+    <h2>Task Manager (Admin)</h2>
+
+    <!-- Форма добавления задачи -->
+    <form id="add-task-form">
+      <input type="text" id="newTask" placeholder="New task..." required/>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Список задач -->
+    <ul id="tasks-list"></ul>
+  </div>
+
+  <script src="admin.js"></script>
 </body>
 </html>
