@@ -6,87 +6,52 @@
   <title>Admin Login</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-    }
-
-    .header {
-      background-color: #3399e6;
-      color: white;
-      padding: 15px 20px;
+      background: #f4f6f8;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      height: 100vh;
     }
-
-    .header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .back-btn {
-      color: #fff;
-      background-color: #287bb5;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-    }
-
-    .back-btn:hover {
-      background-color: #1e5d8a;
-    }
-
-    .login-container {
-      width: 90%;
-      max-width: 400px;
-      margin: 60px auto;
-      background-color: white;
-      padding: 25px;
+    .login-box {
+      background: white;
+      padding: 20px 30px;
       border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      width: 300px;
     }
-
-    input[type="text"], input[type="password"] {
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .login-box input {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      box-sizing: border-box;
     }
-
-    button {
+    .login-box button {
       width: 100%;
       padding: 10px;
-      background-color: #3399e6;
-      color: white;
+      background: #3399e6;
       border: none;
+      color: white;
+      font-weight: bold;
       border-radius: 4px;
       cursor: pointer;
     }
-
-    button:hover {
-      background-color: #287bb5;
+    .login-box button:hover {
+      background: #287bb5;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>Task Manager - Admin Panel</h1>
-    <a href="index.html" class="back-btn">Back to Site</a>
-  </div>
-
-  <div class="login-container">
+  <div class="login-box">
+    <h2>Admin Login</h2>
     <form id="login-form">
-      <h2>Admin Login</h2>
-      <label for="username">Username</label>
-      <input type="text" id="username" required>
-
-      <label for="password">Password</label>
-      <input type="password" id="password" required>
-
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
       <button type="submit">Login</button>
     </form>
   </div>

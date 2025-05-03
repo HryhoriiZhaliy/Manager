@@ -1,8 +1,8 @@
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
   
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
   
     try {
       const response = await fetch('/api/admin/login', {
@@ -13,17 +13,15 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   
       const data = await response.json();
   
-      // 🔥 ЭТО ГЛАВНОЕ
       if (data.success === true) {
         localStorage.setItem('adminLoggedIn', 'true');
-        window.location.href = 'admin.html';
+        window.location.href = 'admin.html'; // или admin-panel.html, если панель другая
       } else {
         alert('❌ Неверный логин или пароль!');
       }
     } catch (err) {
       console.error('Ошибка входа:', err);
-      alert('⚠️ Ошибка входа на сервере');
+      alert('⚠️ Ошибка при подключении к серверу.');
     }
   });
-  
   
