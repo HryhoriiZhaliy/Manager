@@ -4,49 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Task Manager</title>
-
-  <!-- Единый минималистичный стиль -->
   <style>
-    body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;
-         display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
-
-    .box{background:#fff;padding:20px 30px;border-radius:6px;box-shadow:0 0 8px rgba(0,0,0,.1);
-         width:350px;margin-top:60px}
-
-    h1{text-align:center;margin:0 0 20px;font-size:24px;color:#333}
-
-    /* ссылка на админку */
-    .admin-link{display:block;text-align:center;margin-top:-10px;margin-bottom:20px;
-                color:#287bb5;text-decoration:none;font-size:14px}
-    .admin-link:hover{text-decoration:underline}
-
-    /* поиск */
-    #search{width:100%;padding:10px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;margin-bottom:15px}
-
-    /* список задач – ровные строки */
-    ul{list-style:none;padding:0;margin:0}
-    ul li{
-      display:flex;align-items:center;gap:12px;
-      padding:12px 0;border-bottom:1px solid #ddd
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
     }
-    ul li input[type="checkbox"]{
-      flex:0 0 20px;height:20px;cursor:pointer
+
+    .header {
+      background-color: #3399e6;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    ul li span{flex:1 1 auto;word-break:break-word}
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .admin-link {
+      color: #fff;
+      background-color: #287bb5;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    .admin-link:hover {
+      background-color: #1e5d8a;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #search {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 8px 0;
+    }
+
+    ul li input[type="checkbox"] {
+      margin-right: 10px;
+    }
   </style>
 </head>
 <body>
-
-  <div class="box">
+  <div class="header">
     <h1>Task Manager</h1>
-    <a href="admin.html" class="admin-link">Admin panel</a>
+    <a href="/admin.html" class="admin-link">Admin Panel</a>
+  </div>
 
-    <input type="text" id="search" placeholder="Search tasks…"/>
-
+  <div class="container">
+    <input type="text" id="search" placeholder="Search tasks...">
     <ul id="tasks-list"></ul>
   </div>
 
-  <!-- Логика загрузки/поиска -->
-  <script src="app.js" defer></script>
+  <script src="app.js"></script>
 </body>
 </html>
