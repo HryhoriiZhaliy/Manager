@@ -13,15 +13,17 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   
       const data = await response.json();
   
-      if (data.success) {
+      // 🔥 ЭТО ГЛАВНОЕ
+      if (data.success === true) {
         localStorage.setItem('adminLoggedIn', 'true');
         window.location.href = 'admin.html';
       } else {
         alert('❌ Неверный логин или пароль!');
       }
     } catch (err) {
-      console.error('Login error:', err);
-      alert('⚠️ Ошибка на сервере');
+      console.error('Ошибка входа:', err);
+      alert('⚠️ Ошибка входа на сервере');
     }
   });
+  
   
