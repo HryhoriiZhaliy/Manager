@@ -5,6 +5,13 @@ let tasks = [];
 // Загрузка задач из базы
 async function loadTasks() {
   const res = await fetch('/api/tasks');
+  
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("Server error:", text);
+    return;
+  }
+
   tasks = await res.json();
   displayTasks(tasks);
 }
@@ -26,12 +33,14 @@ searchInput.addEventListener('input', () => {
   displayTasks(filteredTasks);
 });
 
-// Отметка задач как выполненных (только отображение, без сохранения для простоты)
+// Отметка задач как выполненных (только визуально)
 tasksList.addEventListener('change', (e) => {
   if (e.target.type === 'checkbox') {
     const taskId = e.target.dataset.id;
     const task = tasks.find(t => t.id === taskId);
-    task.completed = e.target.checked;
+    if (task) {
+      task.completed = e.target.checked;
+    }
   }
 });
 
